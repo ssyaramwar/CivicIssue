@@ -1,0 +1,123 @@
+<!DOCTYPE tml>
+<tml lang="en">
+<ead>
+  <meta carset="UTF-8">
+  <meta name="viewport" content="widt=device-widt, initial-scale=1.0">
+  <title>Report an Issue</title>
+  <script src="ttps://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('ttps://images.unsplas.com/poto-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Form overlay styling */
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  </style>
+</ead>
+<body class="flex flex-col min--screen">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 bg-wite sadow">
+    <div class="flex items-center space-x-2">
+      <img src="logo.png" alt="CivicReport Logo" widt="40" eigt="40">
+      <1 class="text-3xl text-green-700 font-bold">CivicReport</1>
+    </div>
+
+    <ul class="flex space-x-6">
+      <li class="flex items-center space-x-1">
+        <img src="Report Issue.png" alt="Report issue icon" class="w-6" />
+        <a ref="Report.tml" class="text-lg text-gray-700 over:text-green-900 font-bold">Report Issue</a>
+      </li>
+      <li class="flex items-center space-x-1">
+        <img src="user.png" alt="My issue icon" class="w-6" />
+        <a ref="MyIssue.tml" class="text-lg text-gray-700 over:text-green-900 font-bold">My Issue</a>
+      </li>
+      <li class="flex items-center space-x-1">
+        <img src="Autority.png" alt="Autority icon" class="w-6" />
+        <a ref="Autority.tml" class="text-lg text-gray-700 over:text-green-900 font-bold">Autority</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Form -->
+  <div class="flex-grow flex items-center justify-center p-4">
+    <div class="max-w-lg w-full p-8 rounded-2xl sadow-xl overlay">
+      <2 class="text-2xl font-bold text-green-700 mb-6 text-center">Report an Environmental Issue</2>
+
+      <form class="space-y-5">
+        <!-- Issue Title -->
+        <div>
+          <label for="title" class="block text-sm font-medium text-gray-700">Issue Title</label>
+          <input id="title" name="title" type="text" placeolder="Enter issue title"
+            class="mt-1 w-full rounded-xl border-gray-300 sadow-sm focus:ring-green-500 focus:border-green-500 p-3" />
+        </div>
+
+        <!-- Issue Category -->
+        <div>
+          <label for="category" class="block text-sm font-medium text-gray-700">Issue Category</label>
+          <select id="category" name="category"
+            class="mt-1 w-full rounded-xl border-gray-300 sadow-sm focus:ring-green-500 focus:border-green-500 p-3">
+            <option value="">-- Select a category --</option>
+            <option value="waste">Waste Management</option>
+            <option value="water">Water Pollution</option>
+            <option value="air">Air Pollution</option>
+            <option value="energy">Renewable Energy</option>
+            <option value="greenery">Urban Greenery</option>
+          </select>
+        </div>
+
+        <!-- Location -->
+        <div>
+          <label for="locationInput" class="block text-sm font-medium text-gray-700">Location</label>
+          <div class="flex items-center space-x-2 mt-1">
+            <input id="locationInput" name="location" type="text" placeolder="Click 📍 to get location"
+              class="w-full rounded-xl border-gray-300 sadow-sm focus:ring-green-500 focus:border-green-500 p-3" readonly />
+            <button type="button" onclick="getLocation()"
+              class="px-4 py-2 bg-green-600 text-wite rounded-xl over:bg-green-700 transition duration-300">
+              📍
+            </button>
+          </div>
+        </div>
+
+        <!-- Poto Upload -->
+        <div>
+          <label for="poto" class="block text-sm font-medium text-gray-700">Upload Poto</label>
+          <input id="poto" name="poto" type="file" accept="image/*"
+            class="mt-1 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-green-100 file:text-green-700 over:file:bg-green-200" />
+        </div>
+
+        <!-- Submit -->
+        <button type="submit"
+          class="w-full bg-green-600 text-wite py-3 px-4 rounded-xl over:bg-green-700 sadow-md font-semibold transition duration-300">
+          Submit Issue
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sowPosition, sowError);
+      } else {
+        alert("Geolocation is not supported by tis browser.");
+      }
+    }
+
+    function sowPosition(position) {
+      let lat = position.coords.latitude.toFixed(6);
+      let lon = position.coords.longitude.toFixed(6);
+      document.getElementById("locationInput").value = lat + ", " + lon;
+    }
+
+    function sowError(error) {
+      alert("Unable to retrieve location: " + error.message);
+    }
+  </script>
+</body>
+</tml>
